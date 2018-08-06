@@ -2,24 +2,24 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `CarRental` DEFAULT CHARACTER SET utf8 ;
-USE `CarRental`;
+CREATE SCHEMA IF NOT EXISTS `CarRentalSroka` DEFAULT CHARACTER SET utf8 ;
+USE `CarRentalSroka`;
 
 -- -----------------------------------------------------
 -- Clear tables before creating
 -- -----------------------------------------------------
-DROP TABLE 	CarRental.CAR, 
-			CarRental.CAR_CARER, 
-            CarRental.CAR_TYPE, 
-            CarRental.CUSTOMER, 
-            CarRental.EMPLOYEE, 
-            CarRental.LOCATION, 
-            CarRental.POSITION;
+DROP TABLE 	CarRentalSroka.CAR, 
+			CarRentalSroka.CAR_CARER, 
+            CarRentalSroka.CAR_TYPE, 
+            CarRentalSroka.CUSTOMER, 
+            CarRentalSroka.EMPLOYEE, 
+            CarRentalSroka.LOCATION, 
+            CarRentalSroka.POSITION;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`EMPLOYEE`
+-- Table `CarRentalSroka`.`EMPLOYEE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.EMPLOYEE (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.EMPLOYEE (
   ID INT NOT NULL,
   NAME VARCHAR(20) DEFAULT '',
   SURNAME VARCHAR(20) DEFAULT '',
@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS CarRental.EMPLOYEE (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CAR`
+-- Table `CarRentalSroka`.`CAR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.CAR (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.CAR (
   ID INT NOT NULL,
   MANUFACTURER VARCHAR(20) DEFAULT '',
   MODEL VARCHAR(20) DEFAULT '',
@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS CarRental.CAR (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CUSTOMER`
+-- Table `CarRentalSroka`.`CUSTOMER`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.CUSTOMER (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.CUSTOMER (
   ID INT NOT NULL,
   NAME VARCHAR(20) DEFAULT '',
   SURNAME VARCHAR(20) DEFAULT '',
@@ -70,9 +70,9 @@ CREATE TABLE IF NOT EXISTS CarRental.CUSTOMER (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`RENTAL`
+-- Table `CarRentalSroka`.`RENTAL`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.RENTAL (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.RENTAL (
   ID INT NOT NULL,
   CUSTOMER_ID INT NULL,
   SURNAME VARCHAR(20) NULL,
@@ -93,9 +93,9 @@ CREATE TABLE IF NOT EXISTS CarRental.RENTAL (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`LOCATION`
+-- Table `CarRentalSroka`.`LOCATION`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.LOCATION (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.LOCATION (
   ID INT NOT NULL,
   ADDRESS VARCHAR(30) DEFAULT '',
   CITY VARCHAR(30) DEFAULT '',
@@ -106,26 +106,26 @@ CREATE TABLE IF NOT EXISTS CarRental.LOCATION (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CAR_CARER`
+-- Table `CarRentalSroka`.`CAR_CARER`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.CAR_CARER (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.CAR_CARER (
   EMPLOYEE_ID INT NOT NULL,
   CAR_ID INT NOT NULL)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CAR_TYPE`
+-- Table `CarRentalSroka`.`CAR_TYPE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.CAR_TYPE (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.CAR_TYPE (
   ID INT NOT NULL,
   TYPE VARCHAR(30),
   PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`POSITION`
+-- Table `CarRentalSroka`.`POSITION`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS CarRental.POSITION (
+CREATE TABLE IF NOT EXISTS CarRentalSroka.POSITION (
   ID INT NOT NULL,
   POSITION VARCHAR(30),
   PRIMARY KEY (ID))
