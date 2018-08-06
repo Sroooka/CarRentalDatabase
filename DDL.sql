@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS CarRental.EMPLOYEE (
   ID INT NOT NULL,
   NAME VARCHAR(20) NULL,
   SURNAME VARCHAR(20) NULL,
-  POSITION ENUM('dealer', 'manager', 'accountant') NULL,
+  POSITION_ID INT NULL,
   PESEL INTEGER(11) NULL,
   PHONE VARCHAR(20) NULL,
   EMAIL VARCHAR(30) NULL,
@@ -28,14 +28,7 @@ CREATE TABLE IF NOT EXISTS CarRental.CAR (
   MANUFACTURER VARCHAR(20),
   MODEL VARCHAR(20),
   PRODUCTION_YEAR INT(4),
-  TYPE ENUM("sedan", 
-			"wagon", 
-            "suv", 
-            "hatchback", 
-            "cabriolet", 
-            "coupe",
-            "pickup",
-            "4wd") NULL,
+  TYPE_ID INT NULL,
   COLOR VARCHAR(12) NULL,
   ENGINE_SIZE INT(5) NULL,
   POWER INT(4) NULL,
@@ -106,6 +99,24 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS CarRental.CAR_CARER (
   EMPLOYEE_ID INT NOT NULL,
   CAR_ID INT NOT NULL)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `CarRental`.`CAR_TYPE`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CarRental.CAR_TYPE (
+  ID INT NOT NULL,
+  TYPE VARCHAR(30) NULL,
+  PRIMARY KEY (ID))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `CarRental`.`POSITION`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CarRental.POSITION (
+  ID INT NOT NULL,
+  POSITION VARCHAR(30) NULL,
+  PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
