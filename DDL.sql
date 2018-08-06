@@ -65,6 +65,28 @@ CREATE TABLE IF NOT EXISTS CarRental.CUSTOMER (
   PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `CarRental`.`CUSTOMER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CarRental.RENTAL (
+  ID INT NOT NULL,
+  CUSTOMER_ID INT NULL,
+  SURNAME VARCHAR(20) NULL,
+  RENT_STATUS ENUM("order", 
+					"customer accepted", 
+                    "rent", 
+                    "car returned", 
+                    "car not returned", 
+                    "paid") NULL,
+  RENT_BEGIN DATE NULL,
+  RENT_END DATE NULL,
+  CAR_ID INT NULL,
+  START_LOCATION_ID INT NULL,
+  END_LOCATION_ID INT NULL,
+  COST INT,
+  PRIMARY KEY (ID))
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
