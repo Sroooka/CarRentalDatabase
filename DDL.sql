@@ -20,6 +20,32 @@ CREATE TABLE IF NOT EXISTS CarRental.EMPLOYEE (
   PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `CarRental`.`CAR`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CarRental.CAR (
+  ID INT NOT NULL,
+  MANUFACTURER VARCHAR(20),
+  MODEL VARCHAR(20),
+  PRODUCTION_YEAR INT(4),
+  TYPE ENUM("sedan", 
+			"wagon", 
+            "suv", 
+            "hatchback", 
+            "cabriolet", 
+            "coupe",
+            "pickup",
+            "4wd"),
+  COLOR VARCHAR(12),
+  ENGINE_SIZE INT(5),
+  POWER INT(4),
+  MILEAGE INT(7),
+  SEATS INT(2),
+  FUEL ENUM("petrol", "diesel", "lpg", "electric"),
+  CURRENT_LOCATION_ID INT,
+  PRIMARY KEY (ID))
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
