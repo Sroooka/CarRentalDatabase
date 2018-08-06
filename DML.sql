@@ -13,3 +13,4 @@ INSERT INTO position (id, position) VALUES (1, 'dealer');
 INSERT INTO position (id, position) VALUES (2, 'manager');
 INSERT INTO position (id, position) VALUES (3, 'accountant');
 
+-- insert Location
