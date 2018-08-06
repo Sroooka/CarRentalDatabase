@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS CarRental.CUSTOMER (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CUSTOMER`
+-- Table `CarRental`.`RENTAL`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS CarRental.RENTAL (
   ID INT NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS CarRental.RENTAL (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `CarRental`.`CUSTOMER`
+-- Table `CarRental`.`LOCATION`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS CarRental.LOCATION (
   ID INT NOT NULL,
@@ -98,6 +98,14 @@ CREATE TABLE IF NOT EXISTS CarRental.LOCATION (
   PHONE VARCHAR(20) NULL,
   EMAIL VARCHAR(30) NULL,
   PRIMARY KEY (ID))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `CarRental`.`CAR_CARER`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS CarRental.CAR_CARER (
+  EMPLOYEE_ID INT NOT NULL,
+  CAR_ID INT NOT NULL)
 ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
