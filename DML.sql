@@ -232,3 +232,96 @@ INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_locatio
 		VALUES(39, 12, 12, "2018-08-30", "2018-08-30", 1, 2, 320);
 INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
 		VALUES(40, 18, 10, "2018-10-27", "2018-10-28", 5, 4, 190);
+
+-- insert Car_Carer
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(1, 1);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(2, 2);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(3, 3);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(4, 4);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(5, 5);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(6, 6);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(7, 7);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(8, 8);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(9, 9);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(10, 10);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(11, 11);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(12, 12);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(13, 13);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(14, 14);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(15, 15);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(1, 16);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(2, 17);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(3, 18);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(4, 19);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(5, 20);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(6, 21);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(7, 22);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(8, 23);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(9, 24);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(10, 25);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(11, 1);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(12, 2);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(13, 3);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(14, 4);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(15, 5);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(1, 6);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(2, 7);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(3, 8);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(4, 9);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(5, 10);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(6, 1);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(7, 2);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(8, 3);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(9, 4);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(10, 5);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(11, 6);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(12, 1);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(13, 2);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(14, 3);
+INSERT INTO car_carer (employee_id, car_id)
+		VALUES(15, 1);
+car_carer
