@@ -232,6 +232,26 @@ INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_locatio
 		VALUES(39, 12, 12, "2018-08-30", "2018-08-30", 1, 2, 320);
 INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
 		VALUES(40, 18, 10, "2018-10-27", "2018-10-28", 5, 4, 190);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(41, 20, 10, "2018-10-18", "2018-10-19", 5, 5, 190);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(42, 20, 10, "2018-10-27", "2018-10-28", 5, 4, 160);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(43, 1, 1, "2017-01-01", "2017-01-02", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(44, 1, 2, "2017-01-02", "2017-01-02", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(45, 1, 3, "2017-01-03", "2017-01-03", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(46, 1, 3, "2017-01-04", "2017-01-04", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(47, 1, 5, "2017-01-05", "2017-01-05", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(48, 1, 6, "2017-01-06", "2017-01-06", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(49, 1, 7, "2017-01-12", "2017-01-12", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(50, 1, 8, "2017-01-15", "2017-01-18", 1, 1, 50);
 
 -- insert Car_Carer
 INSERT INTO car_carer (employee_id, car_id)

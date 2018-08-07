@@ -1,5 +1,5 @@
 -- 4a
-SELECT e.ID, e.NAME, e.SURNAME, e.AGE, e.NAME, p.POSITION, l.CITY
+SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
     JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
@@ -7,7 +7,7 @@ WHERE e.age > 25
 ORDER BY e.age;
 
 -- 4b
-SELECT e.ID, e.NAME, e.SURNAME, e.AGE, e.NAME, p.POSITION, l.CITY
+SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
     JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
@@ -15,7 +15,7 @@ WHERE length(surname)>5
 ORDER BY e.age;
 
  -- 4c
-SELECT e.ID, e.NAME, e.SURNAME, e.AGE, e.NAME, p.POSITION, l.CITY
+SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
     JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
@@ -37,9 +37,85 @@ WHERE ca.mileage between 200000 and 300000
 ORDER BY ca.mileage;
 
 -- 4f
-SELECT e.ID, e.NAME, e.SURNAME, e.AGE, e.NAME, p.POSITION, l.CITY
+SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
     JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
 WHERE p.POSITION = "manager"
 ORDER BY e.age;
+
+-- 4g1
+SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', max(amount) AS 'Rents' from (
+	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		GROUP BY c.ID
+	ORDER BY amount DESC
+)y;
+
+-- 4g2
+SELECT MONTHNAME(date1) AS Month, totalrents AS 'Total rents' 
+FROM
+(
+	SELECT RENT_BEGIN AS date1, COUNT(ID) as totalrents
+		FROM rental
+		GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
+)t;
+
+-- 4g3
+SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', amount AS 'Amount', month AS 'Month', year AS 'Year' from (
+	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount, MONTHNAME(RENT_BEGIN) AS month, YEAR(RENT_BEGIN) AS year
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+        GROUP BY c.id, YEAR(RENT_BEGIN), MONTH(RENT_BEGIN)
+		ORDER BY c.id, amount DESC
+ )y
+GROUP BY showid;
+
+-- 4g4
+SELECT MONTHNAME(date1) AS Month, totalrents/customer_amount AS 'Total rents per client' 
+FROM
+(
+	SELECT RENT_BEGIN AS date1, COUNT(ID) as totalrents
+		FROM rental
+		GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
+)t,
+(
+	SELECT COUNT(ID) as customer_amount
+		FROM customer
+)y;
+
+-- 4h
+SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', count(amount) AS 'Different Cars' FROM(
+	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		GROUP BY c.id, r.car_id
+		ORDER BY c.id
+)y
+GROUP BY showid;
+
+-- 4i
+
+-- MANUFACTURER WITH MODEL
+SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', amount AS 'Rents' FROM(
+-- SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', max(amount) AS 'Rents' FROM(
+	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
+	FROM car c
+		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
+		GROUP BY c.MODEL
+		ORDER BY c.id
+)y
+ORDER BY amount DESC;
+
+-- JUST MANUFACTURER
+SELECT showmanu AS 'Manufacturer', amount AS 'Rents' FROM(
+-- SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', max(amount) AS 'Rents' FROM(
+	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
+	FROM car c
+		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
+		GROUP BY c.MANUFACTURER
+		ORDER BY c.id
+)y
+ORDER BY amount DESC;
+
