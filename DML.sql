@@ -128,7 +128,7 @@ INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date,
 		VALUES(8, "Alicja", "Jaworska", "Unruga 9", "Warszawa", "22-664", "1992-02-11", "+(48)848-665-555", "ajaworska@gmail.com", "1478547585235698514");
 INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
 		VALUES(9, "Maria", "Adamczyk", "Wojska Polskiego 10", "Gdansk", "43-963", "1991-07-02", "+(48)885-654-259", "madamczyk@gmail.com", "5012548520145842195");
-INSERT INTO customer (id, nacustomerme, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
 		VALUES(10, "Aleksandra", "Dudek", "Westerplatte 9/14", "Gdansk", "43-475", "1990-02-07", "+(48)665-852-319", "adudek@gmail.com", "0124515487545485695");
 INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
 		VALUES(11, "Oliwia", "Nowiska", "Zwirki i Wigury 81", "Gdansk", "43-454", "1989-02-30", "+(48)858-852-010", "onowinska@gmail.com", "2525369851547895365");
@@ -150,3 +150,85 @@ INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date,
 		VALUES(19, "Anna", "Michalak", "Wrzesinska 9", "Lodz", "38-754", "1981-10-11", "+(48)777-855-000", "amichalak@mail.com", "9501245784215695210");
 INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
 		VALUES(20, "Lilianna", "Szewczyk", "Plantaza 10/10", "Lodz", "38-754", "1980-10-26", "+(48)779-659-745", "lszewczyk@mail.com", "9546854858021312568");
+
+-- insert Rental
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(1, 1, 1, "2017-01-01", "2017-01-02", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(2, 2, 2, "2017-01-07", "2017-01-07", 2, 2, 200);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(3, 3, 3, "2017-01-10", "2017-01-11", 3, 3, 150);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(4, 4, 4, "2017-02-06", "2017-02-08", 4, 4, 200);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(5, 5, 5, "2017-02-10", "2017-02-10", 5, 5, 100);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(6, 6, 6, "2017-02-17", "2017-02-19", 1, 1, 50);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(7, 7, 7, "2017-03-20", "2017-03-21", 2, 2, 90);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(8, 8, 8, "2017-03-21", "2017-03-21", 3, 3, 70);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(9, 9, 9, "2017-03-28", "2017-03-29", 4, 4, 80);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(10, 10, 10, "2017-04-04", "2017-04-06", 5, 5, 70);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(11, 11, 11, "2017-04-06", "2017-04-07", 1, 2, 300);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(12, 12, 12, "2017-04-27", "2017-04-28", 1, 2, 350);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(13, 13, 13, "2017-05-20", "2017-05-20", 2, 3, 240);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(14, 14, 14, "2017-05-24", "2017-05-26", 2, 3, 240);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(15, 15, 15, "2017-05-26", "2017-05-26", 3, 2, 140);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(16, 16, 1, "2017-06-05", "2017-06-08", 3, 2, 250);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(17, 17, 2, "2017-06-14", "2017-06-17", 4, 5, 350);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(18, 18, 3, "2017-06-18", "2017-06-19", 4, 5, 180);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(19, 19, 4, "2017-07-04", "2017-07-06", 5, 4, 160);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(20, 20, 5, "2017-07-08", "2017-07-09", 4, 2, 170);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(21, 1, 6, "2017-07-09", "2017-07-09", 1, 4, 70);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(22, 1, 7, "2017-08-05", "2017-08-05", 2, 4, 80);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(23, 1, 8, "2017-08-17", "2017-08-17", 4, 5, 80);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(24, 2, 9, "2017-08-19", "2017-08-19", 2, 2, 90);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(25, 2, 10, "2017-09-08", "2017-09-09", 1, 1, 60);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(26, 2, 11, "2017-09-16", "2017-09-17", 1, 5, 80);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(27, 2, 12, "2017-09-19", "2017-09-10", 5, 1, 120);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(28, 2, 13, "2017-10-12", "2017-10-12", 2, 1, 130);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(29, 3, 14, "2017-10-17", "2017-10-18", 1, 5, 200);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(30, 4, 15, "2017-10-19", "2017-10-19", 2, 2, 300);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(31, 10, 1, "2017-10-27", "2017-10-27", 2, 2, 150);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(32, 11, 2, "2017-11-07", "2017-11-08", 3, 3, 500);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(33, 11, 1, "2017-11-09", "2017-11-09", 4, 4, 180);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(34, 12, 1, "2017-12-01", "2017-12-01", 5, 5, 450);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(35, 13, 1, "2017-12-15", "2017-12-17", 3, 2, 100);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(36, 14, 1, "2018-01-11", "2018-01-11", 1, 2, 140);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(37, 14, 3, "2018-04-17", "2018-04-18", 3, 3, 350);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(38, 20, 8, "2018-06-15", "2018-06-15", 1, 3, 340);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(39, 12, 12, "2018-08-30", "2018-08-30", 1, 2, 320);
+INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_location_id, end_location_id, cost)
+		VALUES(40, 18, 10, "2018-10-27", "2018-10-28", 5, 4, 190);
