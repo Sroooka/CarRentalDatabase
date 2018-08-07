@@ -26,56 +26,56 @@ INSERT 	INTO location (id, address, city, postal_code, phone, email)
 		VALUES (5, 'Dabrowskiego 13/9', 'Lodz', '87665', '+(48)17-654-25-25', 'office.lodz@carrentalsroka.com');
         
 -- insert Employee
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(1, 'Antoni', 'kFowadis', 2, '99010254841', 1);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(2, 'Jakub', 'Kowalski', 3, '98050687458', 1);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(3, 'Jan', 'Wisniewski', 1, '97045245215', 1);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(4, 'Szymon', 'Wojcik', 1, '96145215985', 1);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(5, 'Franciszek', 'Kowalczyk', 1, '95632569852', 1);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(6, 'Filip', 'Kaminski', 2, '94154245875', 2);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(7, 'Aleksander', 'Lewandowski', 3, '93458745896', 2);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(8, 'Wojciech', 'Zielinski', 1, '92145854854', 2);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(9, 'Kacper', 'Szymanski', 1, '90121454124', 2);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(10, 'Mikolaj', 'Wozniak', 1, '89521458585', 2);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(11, 'Adam', 'Dabrowski', 2, '88454575865', 3);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(12, 'Michau', 'Kozlowski', 3, '87145252523', 3);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(13, 'Marcel', 'Jankowski', 1, '86147852545', 3);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(14, 'Wiktor', 'Mazur', 1, '85124587595', 3);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(15, 'Piotr', 'Wojciechowski', 1, '84754854854', 3);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(16, 'Stanislaw', 'Kwiatkowski', 2, '83111145211', 4);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(17, 'Igor', 'Krawczyk', 3, '82145748587', 4);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(18, 'Mateusz', 'Kaczmarek', 1, '81458585858', 4);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(19, 'Bartosz', 'Piotrowski', 1, '80121252421', 4);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(20, 'Nikodem', 'Grabowski', 1, '79369636965', 4);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(21, 'Leon', 'Zajac', 2, '78414141414', 5);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(22, 'Milosz', 'Pawlowski', 3, '77142515895', 5);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(23, 'Maksymilian', 'Michalski', 1, '76145854584', 5);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(24, 'Tymon', 'Krol', 1, '75142525252', 5);
-INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
-		VALUES(25, 'Alan', 'Wieczorek', 1, '74256256940', 5);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(1, 'Antoni', 'kFowadis', 2, 19, 1);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(2, 'Jakub', 'Kowalski', 3, 19, 1);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(3, 'Jan', 'Wisniewski', 1, 20, 1);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(4, 'Szymon', 'Wojcik', 1, 21, 1);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(5, 'Franciszek', 'Kowalczyk', 1, 22, 1);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(6, 'Filip', 'Kaminski', 2, 23, 2);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(7, 'Aleksander', 'Lewandowski', 3, 24, 2);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(8, 'Wojciech', 'Zielinski', 1, 25, 2);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(9, 'Kacper', 'Szymanski', 1, 26, 2);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(10, 'Mikolaj', 'Wozniak', 1, 27, 2);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(11, 'Adam', 'Dabrowski', 2, 28, 3);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(12, 'Michau', 'Kozlowski', 3, 29, 3);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(13, 'Marcel', 'Jankowski', 1, 30, 3);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(14, 'Wiktor', 'Mazur', 1, 31, 3);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(15, 'Piotr', 'Wojciechowski', 1, 32, 3);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(16, 'Stanislaw', 'Kwiatkowski', 2, 33, 4);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(17, 'Igor', 'Krawczyk', 3, 34, 4);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(18, 'Mateusz', 'Kaczmarek', 1, 35, 4);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(19, 'Bartosz', 'Piotrowski', 1, 36, 4);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(20, 'Nikodem', 'Grabowski', 1, 37, 4);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(21, 'Leon', 'Zajac', 2, 38, 5);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(22, 'Milosz', 'Pawlowski', 3, 39, 5);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(23, 'Maksymilian', 'Michalski', 1, 40, 5);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(24, 'Tymon', 'Krol', 1, 41, 5);
+INSERT INTO employee (id, name, surname, position_id, age, location_id)
+		VALUES(25, 'Alan', 'Wieczorek', 1, 42, 5);
         
 -- insert Car
 INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
@@ -324,4 +324,3 @@ INSERT INTO car_carer (employee_id, car_id)
 		VALUES(14, 3);
 INSERT INTO car_carer (employee_id, car_id)
 		VALUES(15, 1);
-car_carer
