@@ -76,4 +76,37 @@ INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
 		VALUES(24, 'Tymon', 'Krol', 1, '75142525252', 5);
 INSERT INTO employee (id, name, surname, position_id, pesel, location_id)
 		VALUES(25, 'Alan', 'Wieczorek', 1, '74256256940', 5);
+        
+-- insert Car
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(1, "Mercedes", "W204", 2012, 6, "white", 1796, 170, 120000, 1);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(2, "Mercedes", "W205", 2017, 6, "white", 1796, 170, 150000, 1);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(3, "Mercedes", "W204", 2014, 6, "red", 2200, 224, 200000, 1);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(4, "Mercedes", "W205", 2017, 6, "black", 2200, 224, 199999, 2);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(5, "Mercedes", "W204", 2012, 6, "black", 2200, 224, 300000, 2);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(6, "Mercedes", "W204", 2012, 6, "silver", 2200, 224, 300001, 2);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(7, "Mercedes", "W212", 2010, 1, "gray", 3196, 278, 299999, 3);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(8, "Mercedes", "W212", 2012, 1, "yellow", 3196, 278, 80000, 3);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(9, "Mercedes", "W212", 2011, 2, "red", 3196, 278, 123100, 3);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(10, "Mercedes", "W212", 2010, 2, "black", 3196, 278, 145900, 4);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(11, "Fiat", "Seicento", 1995, 4, "blue", 900, 80, 390000, 4);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(12, "Fiat", "Tico", 1996, 4, "blue", 800, 63, 480000, 4);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(13, "Fiat", "Tipo", 2005, 1, "orange", 1198, 98, 150220, 5);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(14, "BMW", "E46", 2004, 2, "black", 2500, 178, 300000, 5);
+INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
+		VALUES(15, "BMW", "E46", 2005, 2, "black", 2500, 178, 250000, 5);
+
 
