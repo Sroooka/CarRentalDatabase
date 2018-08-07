@@ -109,4 +109,44 @@ INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engin
 INSERT INTO car (id, manufacturer, model, production_year, type_id, color, engine_size, power, mileage, current_location_id)
 		VALUES(15, "BMW", "E46", 2005, 2, "black", 2500, 178, 250000, 5);
 
-
+-- insert Customer
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(1, "Julia", "Jablonska", "Nowakowskiego 5", "Poznan", "61-782", "1999-12-02", "+(48)985-659-651", "jjablonska@gmail.com", "9586589745848575485");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(2, "Zuzanna", "Wrobel", "Maleckiego 6", "Poznan", "61-732", "1998-02-12", "+(48)754-586-225", "zwrobel@gmail.com", "5485485623565895415");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(3, "Zofia", "Nowakowska", "Krakowska 50", "Poznan", "61-775", "1997-05-02", "+(48)741-585-317", "znowakowska@gmail.com", "8585854854859658426");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(4, "Lena", "Majewska", "Poznanska 90", "Poznan", "61-741", "1996-02-05", "+(48)555-856-621", "lmajewska@gmail.com", "9856565895215452154");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(5, "Maja", "Olszewska", "Bukowska 1", "Warszawa", "22-885", "1995-07-02", "+(48)745-658-558", "molszewska@gmail.com", "8585858582145698523");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(6, "Hanna", "Stepien", "Dabrowskiego 1/1", "Warszawa", "22-757", "1994-02-07", "+(48)854-545-852", "hstepien@gmail.com", "7854125635362569157");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(7, "Amelia", "Malinowska", "Kossakowskiego 1/12", "Warszawa", "22-457", "1993-11-02", "+(48)888-985-001", "amalinowska@gmail.com", "1425659586523564984");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(8, "Alicja", "Jaworska", "Unruga 9", "Warszawa", "22-664", "1992-02-11", "+(48)848-665-555", "ajaworska@gmail.com", "1478547585235698514");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(9, "Maria", "Adamczyk", "Wojska Polskiego 10", "Gdansk", "43-963", "1991-07-02", "+(48)885-654-259", "madamczyk@gmail.com", "5012548520145842195");
+INSERT INTO customer (id, nacustomerme, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(10, "Aleksandra", "Dudek", "Westerplatte 9/14", "Gdansk", "43-475", "1990-02-07", "+(48)665-852-319", "adudek@gmail.com", "0124515487545485695");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(11, "Oliwia", "Nowiska", "Zwirki i Wigury 81", "Gdansk", "43-454", "1989-02-30", "+(48)858-852-010", "onowinska@gmail.com", "2525369851547895365");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(12, "Natalia", "Pawlak", "Przemyslowa 2", "Gdansk", "43-001", "1988-02-27", "+(48)805-100-102", "npawlak@gmail.com", "7458485748521023201");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(13, "Wiktoria", "Gorska", "Kosmonautow 10", "Krakow", "67-004", "1987-02-25", "+(48)884-859-000", "wgorska@o2.pl", "1024012502451052105");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(14, "Emilia", "Witkowska", "Jana III Sobieskiego 9", "Krakow", "67-754", "1986-05-08", "+(48)787-541-025", "ewitkowska@o2.pl", "1021023012506406708");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(15, "Antonina", "Walczak", "Piotrowo 90/45", "Krakow", "67-258", "1985-07-18", "+(48)852-525-191", "awalczak@o2.pl", "1254125845854823659");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(16, "Laura", "Sikora", "Berdychowo 1", "Krakow", "67-565", "1984-07-30", "+(48)159-263-487", "lsikora@o2.pl", "2524578451236598594");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(17, "Pola", "Baran", "Lotnicza 5", "Lodz", "38-757", "1983-09-24", "+(48)752-254-659", "pbaran@mail.com", "2541524251524251527");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(18, "Iga", "Rutkowska", "Mostowa 9", "Lodz", "38-785", "1982-04-05", "+(48)747-001-240", "irutkowska@mail.com", "9582105485034697410");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(19, "Anna", "Michalak", "Wrzesinska 9", "Lodz", "38-754", "1981-10-11", "+(48)777-855-000", "amichalak@mail.com", "9501245784215695210");
+INSERT INTO customer (id, name, surname, address, city, postal_code, birth_date, phone, email, credit_card_number)
+		VALUES(20, "Lilianna", "Szewczyk", "Plantaza 10/10", "Lodz", "38-754", "1980-10-26", "+(48)779-659-745", "lszewczyk@mail.com", "9546854858021312568");
