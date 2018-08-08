@@ -109,7 +109,6 @@ ORDER BY amount DESC;
 
 -- JUST MANUFACTURER
 SELECT showmanu AS 'Manufacturer', amount AS 'Rents' FROM(
--- SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', max(amount) AS 'Rents' FROM(
 	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
 	FROM car c
 		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
@@ -165,8 +164,38 @@ SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
 		GROUP BY c.ID;
         
 -- 4l
-set @update_car_id = 1;
+set @update_car_id := 1;
+SELECT @color_before_update := COLOR FROM CarRentalSroka.CAR WHERE ID = @update_car_id;
 UPDATE CarRentalSroka.CAR
     SET COLOR = "deep blue"
     WHERE ID = @update_car_id;
-SELECT COLOR AS 'New Color' FROM CarRentalSroka.CAR WHERE ID=1;
+SELECT @color_before_update AS 'Color before update', COLOR AS 'New Color' FROM CarRentalSroka.CAR WHERE ID=1;
+
+-- 4m
+SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', count(c.ID) AS Rents
+FROM customer c
+	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+	WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
+	GROUP BY c.id
+	HAVING Rents = 
+	(
+	SELECT max(amount) FROM
+		(
+		SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
+			FROM customer c
+			JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+			WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
+			GROUP BY c.id
+		)y
+);
+
+-- 4n
+SELECT domain AS 'Domain', max(amount) AS 'Users' FROM(
+	SELECT SUBSTRING_INDEX(c.email,'@', -1) as domain, count(c.ID) AS amount
+	FROM customer c
+		GROUP BY domain
+		ORDER BY c.id
+)y
+ORDER BY amount DESC;
+
+-- 4o
