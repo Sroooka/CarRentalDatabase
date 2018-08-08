@@ -174,6 +174,37 @@ CREATE TABLE IF NOT EXISTS `CarRentalSroka`.`CAR_CARER` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- View with clients and cars
+-- -----------------------------------------------------
+CREATE VIEW clients_with_rents_and_cars AS
+SELECT r.rent_begin as 'Rent date', CONCAT(cu.name, " ", cu.surname) as 'Customer', CONCAT(ca.manufacturer, " ", ca.model) as 'Car'
+FROM rental r
+	JOIN CarRentalSroka.customer cu ON cu.ID = r.CUSTOMER_ID
+    JOIN CarRentalSroka.car ca ON ca.ID = r.CAR_ID
+ORDER BY r.rent_begin;
+        
+-- -----------------------------------------------------
+-- View with rents by each user on each month
+-- -----------------------------------------------------
+CREATE VIEW rents_by_month_for_customer AS
+SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname,  count(c.ID) AS count, MONTHNAME(RENT_BEGIN) AS month, YEAR(RENT_BEGIN) AS year
+	FROM customer c
+	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+	GROUP BY c.id, YEAR(RENT_BEGIN), MONTH(RENT_BEGIN)
+	ORDER BY c.id, count DESC;
+
+-- -----------------------------------------------------
+-- View with different cars per user
+-- -----------------------------------------------------
+CREATE VIEW different_cars AS
+SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		GROUP BY c.id, r.car_id
+		ORDER BY c.id;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

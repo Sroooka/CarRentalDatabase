@@ -1,3 +1,6 @@
+-- 2a
+SELECT * FROM clients_with_rents_and_cars;
+
 -- 4a
 SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
@@ -63,14 +66,15 @@ FROM
 )t;
 
 -- 4g3
-SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', amount AS 'Amount', month AS 'Month', year AS 'Year' from (
-	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount, MONTHNAME(RENT_BEGIN) AS month, YEAR(RENT_BEGIN) AS year
-	FROM customer c
-		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-        GROUP BY c.id, YEAR(RENT_BEGIN), MONTH(RENT_BEGIN)
-		ORDER BY c.id, amount DESC
- )y
-GROUP BY showid;
+SELECT r.showid as ID, r.showname as Name, r.showsurname as Name, r.count as Rents, r.month as Month, r.year as Year
+FROM rents_by_month_for_customer r
+JOIN(SELECT showid, max(count) as maxCount FROM
+            (
+			SELECT * FROM rents_by_month_for_customer 
+			)y GROUP BY showid) as maxx
+WHERE maxx.showid = r.showid and maxx.maxCount = r.count
+ORDER BY ID;
+
 
 -- 4g4
 SELECT MONTHNAME(date1) AS Month, totalrents/customer_amount AS 'Total rents per client' 
@@ -87,11 +91,7 @@ FROM
 
 -- 4h
 SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', count(amount) AS 'Different Cars' FROM(
-	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
-	FROM customer c
-		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-		GROUP BY c.id, r.car_id
-		ORDER BY c.id
+	SELECT * FROM different_cars
 )y
 GROUP BY showid;
 
@@ -159,7 +159,8 @@ SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
         r.car_id = @search_car_id AND
         (
 			(DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date) OR
-            (DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date)
+            (DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date) OR
+            (DATE(r.rent_begin) < @start_search_date AND DATE(r.rent_end) > @end_search_date)
         )
 		GROUP BY c.ID;
         
@@ -209,11 +210,11 @@ ORDER BY Carers DESC, ID;
 
 -- 4p
 SELECT e.ID as 'ID', e.name as 'Name', e.surname as 'Surname'
-FROM car_carer c
-	JOIN CarRentalSroka.EMPLOYEE e ON e.ID = c.EMPLOYEE_ID
+FROM employee e
 	WHERE e.ID NOT IN 
 	(
 		SELECT EMPLOYEE_ID FROM car_carer GROUP BY EMPLOYEE_ID
 	)
--- GROUP BY e.ID
+ORDER BY e.ID
+
 
