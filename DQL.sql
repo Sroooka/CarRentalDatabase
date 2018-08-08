@@ -99,7 +99,6 @@ GROUP BY showid;
 
 -- MANUFACTURER WITH MODEL
 SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', amount AS 'Rents' FROM(
--- SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', max(amount) AS 'Rents' FROM(
 	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
 	FROM car c
 		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
@@ -123,7 +122,8 @@ ORDER BY amount DESC;
 SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Cost
 FROM customer c
 	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-	GROUP BY r.customer_id -- 680
+    WHERE YEAR(r.RENT_BEGIN) = '2017'
+	GROUP BY r.customer_id
 	HAVING Cost = 
 		(
 			SELECT max(Totalcost1) FROM
@@ -131,10 +131,37 @@ FROM customer c
 				SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Totalcost1
 				FROM customer c
 					JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-					GROUP BY r.customer_id -- 680
+                    WHERE YEAR(r.RENT_BEGIN) = '2017'
+					GROUP BY r.customer_id
 					ORDER BY sum(r.cost) DESC
-		)y
-		)
-ORDER BY sum(r.cost) DESC
+			)y
+		);
 
--- GROUP BY showid;
+-- 4k1
+set @start_search_date = '2017-01-02';
+set @end_search_date = '2017-01-16';
+set @search_car_id = 1;
+SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		WHERE DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date
+        AND r.car_id = @search_car_id
+		GROUP BY c.ID;
+
+-- 4k2
+set @start_search_date = '2017-01-02';
+set @end_search_date = '2017-01-16';
+set @search_car_id = 1;
+SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
+	FROM customer c
+		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		WHERE 
+        -- DATE(r.rent_begin) BETWEEN '2017-01-02' AND '2017-01-16'
+        r.car_id = @search_car_id AND
+        (
+			(DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date) OR
+            (DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date)
+        )
+		GROUP BY c.ID
+        
+-- 4l
