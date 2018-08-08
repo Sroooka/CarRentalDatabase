@@ -119,3 +119,22 @@ SELECT showmanu AS 'Manufacturer', amount AS 'Rents' FROM(
 )y
 ORDER BY amount DESC;
 
+-- 4j
+SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Cost
+FROM customer c
+	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+	GROUP BY r.customer_id -- 680
+	HAVING Cost = 
+		(
+			SELECT max(Totalcost1) FROM
+			(
+				SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Totalcost1
+				FROM customer c
+					JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+					GROUP BY r.customer_id -- 680
+					ORDER BY sum(r.cost) DESC
+		)y
+		)
+ORDER BY sum(r.cost) DESC
+
+-- GROUP BY showid;
