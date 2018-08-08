@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `CarRentalSroka`.`LOCATION` (
   POSTAL_CODE VARCHAR(6) DEFAULT '00-000',
   PHONE VARCHAR(20) DEFAULT '+(48)000-000-000',
   EMAIL VARCHAR(50) DEFAULT 'user@domain.com',
+  INDEX `location_postal_code_idx` (`POSTAL_CODE` ASC),
   PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
@@ -112,6 +113,8 @@ CREATE TABLE IF NOT EXISTS `CarRentalSroka`.`CUSTOMER` (
   PHONE VARCHAR(20) DEFAULT '+(48)000-000-000',
   EMAIL VARCHAR(50) DEFAULT 'user@domain.com',
   CREDIT_CARD_NUMBER VARCHAR(19) DEFAULT '0000000000000000000',
+  INDEX `customer_phone_idx` (`PHONE` ASC),
+  INDEX `customer_email_idx` (`EMAIL` ASC),
   PRIMARY KEY (ID))
 ENGINE = InnoDB;
 
@@ -182,7 +185,7 @@ SELECT r.rent_begin as 'Rent date', CONCAT(cu.name, " ", cu.surname) as 'Custome
 FROM rental r
 	JOIN CarRentalSroka.customer cu ON cu.ID = r.CUSTOMER_ID
     JOIN CarRentalSroka.car ca ON ca.ID = r.CAR_ID
-ORDER BY r.rent_begin;
+ORDER BY r.rent_begin DESC;
         
 -- -----------------------------------------------------
 -- View with rents by each user on each month
@@ -204,6 +207,18 @@ SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID)
 		GROUP BY c.id, r.car_id
 		ORDER BY c.id;
 
+-- -----------------------------------------------------
+-- Trigger
+-- -----------------------------------------------------
+delimiter //
+CREATE TRIGGER checkminimalcost BEFORE INSERT ON rental
+       FOR EACH ROW
+       BEGIN
+           IF NEW.cost < 100 THEN
+               SET NEW.cost = 100;
+           END IF;
+       END//
+delimiter ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
