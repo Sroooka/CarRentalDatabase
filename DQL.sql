@@ -5,7 +5,7 @@ SELECT * FROM clients_with_rents_and_cars;
 SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
-    JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
+	JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
 WHERE e.age > 25
 ORDER BY e.age;
 
@@ -13,7 +13,7 @@ ORDER BY e.age;
 SELECT e.ID, e.NAME, e.SURNAME, e.AGE, p.POSITION, l.CITY
 FROM employee e
 	JOIN CarRentalSroka.position p ON p.ID = e.POSITION_ID
-    JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
+	JOIN CarRentalSroka.location l ON l.ID = e.LOCATION_ID
 WHERE length(surname)>5
 ORDER BY e.age;
 
@@ -25,7 +25,8 @@ FROM employee e
 WHERE e.SURNAME LIKE "_F%";
 
 -- 4d
-SELECT ca.ID, ca.MANUFACTURER, ca.MODEL, ca.PRODUCTION_YEAR, t.TYPE, ca.COLOR, ca.ENGINE_SIZE, ca.POWER, ca.MILEAGE, l.CITY, MAX(MILEAGE) AS MAX_MILEAGE
+SELECT 	ca.ID, ca.MANUFACTURER, ca.MODEL, ca.PRODUCTION_YEAR, t.TYPE, ca.COLOR, 
+		ca.ENGINE_SIZE, ca.POWER, ca.MILEAGE, l.CITY, MAX(MILEAGE) AS MAX_MILEAGE
 FROM CAR ca
 	JOIN CarRentalSroka.car_type t ON t.ID = ca.TYPE_ID
     JOIN CarRentalSroka.location l ON l.ID = ca.CURRENT_LOCATION_ID;
@@ -48,11 +49,13 @@ WHERE p.POSITION = "manager"
 ORDER BY e.age;
 
 -- 4g1
-SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', max(amount) AS 'Rents' from (
+SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', max(amount) AS 'Rents' 
+FROM
+(
 	SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
 	FROM customer c
 		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-		GROUP BY c.ID
+	GROUP BY c.ID
 	ORDER BY amount DESC
 )y;
 
@@ -61,49 +64,55 @@ SELECT MONTHNAME(date1) AS Month, totalrents AS 'Total rents'
 FROM
 (
 	SELECT RENT_BEGIN AS date1, COUNT(ID) as totalrents
-		FROM rental
-		GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
+	FROM rental
+	GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
 )t;
 
 -- 4g3
 SELECT r.showid as ID, r.showname as Name, r.showsurname as Name, r.count as Rents, r.month as Month, r.year as Year
 FROM rents_by_month_for_customer r
-JOIN(SELECT showid, max(count) as maxCount FROM
-            (
+	JOIN(
+    SELECT showid, max(count) as maxCount 
+    FROM
+		(
 			SELECT * FROM rents_by_month_for_customer 
-			)y GROUP BY showid) as maxx
+		)y 
+		GROUP BY showid
+    ) as maxx
 WHERE maxx.showid = r.showid and maxx.maxCount = r.count
 ORDER BY ID;
-
 
 -- 4g4
 SELECT MONTHNAME(date1) AS Month, totalrents/customer_amount AS 'Total rents per client' 
 FROM
 (
 	SELECT RENT_BEGIN AS date1, COUNT(ID) as totalrents
-		FROM rental
-		GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
+	FROM rental
+	GROUP BY DATE_FORMAT(RENT_BEGIN, '%m')
 )t,
 (
 	SELECT COUNT(ID) as customer_amount
-		FROM customer
+	FROM customer
 )y;
 
 -- 4h
-SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', count(amount) AS 'Different Cars' FROM(
+SELECT showid as 'ID', showname AS 'Name', showsurname AS 'Surname', count(amount) AS 'Different Cars' 
+FROM
+(
 	SELECT * FROM different_cars
 )y
 GROUP BY showid;
 
 -- 4i
-
 -- MANUFACTURER WITH MODEL
-SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', amount AS 'Rents' FROM(
+SELECT showmanu AS 'Manufacturer', showmodel AS 'Model', amount AS 'Rents' 
+FROM
+(
 	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
 	FROM car c
 		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
-		GROUP BY c.MODEL
-		ORDER BY c.id
+	GROUP BY c.MODEL
+	ORDER BY c.id
 )y
 ORDER BY amount DESC;
 
@@ -112,94 +121,103 @@ SELECT showmanu AS 'Manufacturer', amount AS 'Rents' FROM(
 	SELECT c.MANUFACTURER AS showmanu, c.MODEL AS showmodel, count(c.ID) AS amount
 	FROM car c
 		JOIN CarRentalSroka.rental r ON r.CAR_ID = c.ID
-		GROUP BY c.MANUFACTURER
-		ORDER BY c.id
+	GROUP BY c.MANUFACTURER
+	ORDER BY c.id
 )y
 ORDER BY amount DESC;
 
 -- 4j
+set @current_year = '2017';
 SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Cost
 FROM customer c
 	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-    WHERE YEAR(r.RENT_BEGIN) = '2017'
-	GROUP BY r.customer_id
-	HAVING Cost = 
-		(
-			SELECT max(Totalcost1) FROM
-			(
-				SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Totalcost1
-				FROM customer c
-					JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-                    WHERE YEAR(r.RENT_BEGIN) = '2017'
-					GROUP BY r.customer_id
-					ORDER BY sum(r.cost) DESC
-			)y
-		);
+WHERE YEAR(r.RENT_BEGIN) = @current_year
+GROUP BY r.customer_id
+HAVING Cost = 
+(
+	SELECT max(Totalcost1) 
+    FROM
+	(
+		SELECT c.ID as 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', sum(r.cost) AS Totalcost1
+		FROM customer c
+			JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+		WHERE YEAR(r.RENT_BEGIN) = @current_year
+		GROUP BY r.customer_id
+		ORDER BY sum(r.cost) DESC
+	)y
+);
 
 -- 4k1
 set @start_search_date = '2017-01-02';
 set @end_search_date = '2017-01-16';
 set @search_car_id = 1;
 SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
-	FROM customer c
-		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-		WHERE DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date
-        AND r.car_id = @search_car_id
-		GROUP BY c.ID;
+FROM customer c
+	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+WHERE 	DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date
+		AND r.car_id = @search_car_id
+GROUP BY c.ID;
 
 -- 4k2
 set @start_search_date = '2017-01-02';
 set @end_search_date = '2017-01-16';
 set @search_car_id = 1;
 SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
-	FROM customer c
-		JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-		WHERE 
-        -- DATE(r.rent_begin) BETWEEN '2017-01-02' AND '2017-01-16'
-        r.car_id = @search_car_id AND
-        (
-			(DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date) OR
-            (DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date) OR
-            (DATE(r.rent_begin) < @start_search_date AND DATE(r.rent_end) > @end_search_date)
-        )
-		GROUP BY c.ID;
+FROM customer c
+	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
+WHERE 
+	r.car_id = @search_car_id 
+    AND
+	(
+		(DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date) OR
+		(DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date) OR
+		(DATE(r.rent_begin) < @start_search_date AND DATE(r.rent_end) > @end_search_date)
+	)
+GROUP BY c.ID;
         
 -- 4l
-set @update_car_id := 1;
+set @update_car_id = 1;
 SELECT @color_before_update := COLOR FROM CarRentalSroka.CAR WHERE ID = @update_car_id;
+
 UPDATE CarRentalSroka.CAR
-    SET COLOR = "deep blue"
-    WHERE ID = @update_car_id;
-SELECT @color_before_update AS 'Color before update', COLOR AS 'New Color' FROM CarRentalSroka.CAR WHERE ID=1;
+SET COLOR = "deep blue"
+WHERE ID = @update_car_id;
+
+SELECT @color_before_update AS 'Color before update', COLOR AS 'New Color' FROM CarRentalSroka.CAR WHERE ID=@update_car_id;
 
 -- 4m
 SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname', count(c.ID) AS Rents
 FROM customer c
 	JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-	WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
-	GROUP BY c.id
-	HAVING Rents = 
+WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
+GROUP BY c.id
+HAVING Rents = 
+(
+	SELECT max(amount) 
+    FROM
 	(
-	SELECT max(amount) FROM
-		(
 		SELECT c.ID AS showid, c.NAME AS showname, c.SURNAME AS showsurname, count(c.ID) AS amount
-			FROM customer c
+		FROM customer c
 			JOIN CarRentalSroka.rental r ON r.CUSTOMER_ID = c.ID
-			WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
-			GROUP BY c.id
-		)y
+		WHERE r.START_LOCATION_ID != r.END_LOCATION_ID
+		GROUP BY c.id
+	)y
 );
 
 -- 4n
-SELECT domain AS 'Domain', max(amount) AS 'Users' FROM(
+SELECT domain AS 'Domain', max(amount) AS 'Users' 
+FROM
+(
 	SELECT SUBSTRING_INDEX(c.email,'@', -1) as domain, count(c.ID) AS amount
 	FROM customer c
-		GROUP BY domain
-		ORDER BY c.id
+	GROUP BY domain
+	ORDER BY c.id
 )y;
 
 -- 4o
-SELECT ca.ID as 'ID', ca.MANUFACTURER as 'Manfacturer', ca.MODEL as 'Model', ca.COLOR as 'Color', ca.PRODUCTION_YEAR as 'Year', CONCAT(lo.city, ": ", lo.address) as 'Current location', count(ca.id) as Carers
+SELECT 	ca.ID as 'ID', ca.MANUFACTURER as 'Manfacturer', ca.MODEL as 'Model', 
+		ca.COLOR as 'Color', ca.PRODUCTION_YEAR as 'Year', 
+        CONCAT(lo.city, ": ", lo.address) as 'Current location', count(ca.id) as Carers
 FROM car_carer c
 	JOIN CarRentalSroka.EMPLOYEE e ON e.ID = c.EMPLOYEE_ID
     JOIN CarRentalSroka.CAR ca ON ca.ID = c.CAR_ID
@@ -211,10 +229,10 @@ ORDER BY Carers DESC, ID;
 -- 4p
 SELECT e.ID as 'ID', e.name as 'Name', e.surname as 'Surname'
 FROM employee e
-	WHERE e.ID NOT IN 
-	(
-		SELECT EMPLOYEE_ID FROM car_carer GROUP BY EMPLOYEE_ID
-	)
+WHERE e.ID NOT IN 
+(
+	SELECT EMPLOYEE_ID 
+    FROM car_carer 
+    GROUP BY EMPLOYEE_ID
+)
 ORDER BY e.ID
-
-
