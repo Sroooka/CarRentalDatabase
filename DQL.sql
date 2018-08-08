@@ -162,6 +162,11 @@ SELECT c.ID AS 'ID', c.NAME AS 'Name', c.SURNAME AS 'Surname'
 			(DATE(r.rent_begin) BETWEEN @start_search_date AND @end_search_date) OR
             (DATE(r.rent_end) 	BETWEEN @start_search_date AND @end_search_date)
         )
-		GROUP BY c.ID
+		GROUP BY c.ID;
         
 -- 4l
+set @update_car_id = 1;
+UPDATE CarRentalSroka.CAR
+    SET COLOR = "deep blue"
+    WHERE ID = @update_car_id;
+SELECT COLOR AS 'New Color' FROM CarRentalSroka.CAR WHERE ID=1;
