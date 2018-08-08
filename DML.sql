@@ -255,13 +255,13 @@ INSERT INTO rental (id, customer_id, car_id, rent_begin, rent_end, start_locatio
 
 -- insert Car_Carer
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(1, 1);
+		VALUES(1, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(2, 2);
+		VALUES(1, 7);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(3, 3);
+		VALUES(1, 8);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(4, 4);
+		VALUES(4, 9);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(5, 5);
 INSERT INTO car_carer (car_id, employee_id)
@@ -273,7 +273,7 @@ INSERT INTO car_carer (car_id, employee_id)
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(9, 9);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(10, 10);
+		VALUES(7, 10);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(11, 11);
 INSERT INTO car_carer (car_id, employee_id)
@@ -287,9 +287,9 @@ INSERT INTO car_carer (car_id, employee_id)
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(1, 16);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(2, 17);
+		VALUES(1, 17);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(3, 18);
+		VALUES(1, 18);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(4, 19);
 INSERT INTO car_carer (car_id, employee_id)
@@ -303,21 +303,21 @@ INSERT INTO car_carer (car_id, employee_id)
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(9, 24);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(10, 25);
+		VALUES(7, 25);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(11, 1);
+		VALUES(11, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(12, 2);
+		VALUES(12, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(13, 3);
+		VALUES(13, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(14, 4);
+		VALUES(14, 8);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(15, 5);
+		VALUES(15, 7);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(1, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(2, 7);
+		VALUES(1, 7);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(3, 8);
 INSERT INTO car_carer (car_id, employee_id)
@@ -327,20 +327,20 @@ INSERT INTO car_carer (car_id, employee_id)
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(6, 1);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(7, 2);
+		VALUES(7, 9);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(8, 3);
+		VALUES(8, 14);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(9, 4);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(10, 5);
+		VALUES(7, 5);
 INSERT INTO car_carer (car_id, employee_id)
 		VALUES(11, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(12, 1);
+		VALUES(12, 6);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(13, 2);
+		VALUES(13, 9);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(14, 3);
+		VALUES(7, 14);
 INSERT INTO car_carer (car_id, employee_id)
-		VALUES(15, 1);
+		VALUES(15, 6);

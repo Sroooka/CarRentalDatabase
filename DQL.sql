@@ -195,7 +195,25 @@ SELECT domain AS 'Domain', max(amount) AS 'Users' FROM(
 	FROM customer c
 		GROUP BY domain
 		ORDER BY c.id
-)y
-ORDER BY amount DESC;
+)y;
 
 -- 4o
+SELECT ca.ID as 'ID', ca.MANUFACTURER as 'Manfacturer', ca.MODEL as 'Model', ca.COLOR as 'Color', ca.PRODUCTION_YEAR as 'Year', CONCAT(lo.city, ": ", lo.address) as 'Current location', count(ca.id) as Carers
+FROM car_carer c
+	JOIN CarRentalSroka.EMPLOYEE e ON e.ID = c.EMPLOYEE_ID
+    JOIN CarRentalSroka.CAR ca ON ca.ID = c.CAR_ID
+    JOIN CarRentalSroka.LOCATION lo ON lo.ID = ca.CURRENT_LOCATION_ID
+GROUP BY ca.ID
+HAVING Carers > 1
+ORDER BY Carers DESC, ID;
+
+-- 4p
+SELECT e.ID as 'ID', e.name as 'Name', e.surname as 'Surname'
+FROM car_carer c
+	JOIN CarRentalSroka.EMPLOYEE e ON e.ID = c.EMPLOYEE_ID
+	WHERE e.ID NOT IN 
+	(
+		SELECT EMPLOYEE_ID FROM car_carer GROUP BY EMPLOYEE_ID
+	)
+-- GROUP BY e.ID
+
